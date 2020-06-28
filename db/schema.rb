@@ -10,10 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_27_223341) do
+ActiveRecord::Schema.define(version: 2020_06_28_000128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "event_types", force: :cascade do |t|
+    t.string "event_type"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "title"
@@ -22,11 +26,13 @@ ActiveRecord::Schema.define(version: 2020_06_27_223341) do
     t.time "end_at"
     t.string "comments"
     t.bigint "user_id"
+    t.bigint "event_type_id"
     t.string "actable_type"
     t.bigint "actable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["actable_type", "actable_id"], name: "index_events_on_actable_type_and_actable_id"
+    t.index ["event_type_id"], name: "index_events_on_event_type_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
