@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_27_153956) do
+ActiveRecord::Schema.define(version: 2020_06_27_223341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,13 @@ ActiveRecord::Schema.define(version: 2020_06_27_153956) do
 
   create_table "shopping_events", force: :cascade do |t|
     t.string "date_range"
+  end
+
+  create_table "shopping_events_recipes", force: :cascade do |t|
+    t.bigint "recipe_id"
+    t.bigint "shopping_event_id"
+    t.index ["recipe_id"], name: "index_shopping_events_recipes_on_recipe_id"
+    t.index ["shopping_event_id"], name: "index_shopping_events_recipes_on_shopping_event_id"
   end
 
   create_table "users", force: :cascade do |t|
