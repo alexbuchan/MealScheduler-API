@@ -6,7 +6,7 @@ recipes = [
 ]
 
 recipe_ingredients = [
-  { name: 'Ham Sandwich', ingredients: [Ingredient.find_by_name('ham'), Ingredient.find_by_name('bread')] }
+  { name: 'Ham Sandwich', ingredients: [{ ingredient: Ingredient.find_by_name('ham'), amount: 50, unit_of_measurement: 'gram' }, { ingredient: Ingredient.find_by_name('bread'), amount: 50, unit_of_measurement: 'gram' }] }
 ]
 
 puts '#####################################################################################################'
@@ -17,7 +17,10 @@ recipes.each_with_index do |recipe, index|
   puts "Creating #{recipe[:name]} ...", "\n"
   user = User.first
   recipe_instance = user.recipes.create(recipe)
-  recipe_instance.ingredients << recipe_ingredients[index][:ingredients]
+  recipe_ingredients[index][:ingredients].each do |ingredient|
+    recipe_ingredient = RecipeIngredient.new(recipe_id: recipe_instance.id, ingredient_id: ingredient[:ingredient].id, amount: ingredient[:amount], unit_of_measurement: ingredient[:unit_of_measurement])
+    recipe_ingredient.save
+  end
   puts recipe, "\n"
   puts "#{recipe[:name]} created"
 end

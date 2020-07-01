@@ -1,3 +1,4 @@
+load 'db/seeds/admin_user_seeds.rb'
 load 'db/seeds/user_seeds.rb'
 load 'db/seeds/ingredient_seeds.rb'
 load 'db/seeds/recipe_seeds.rb'
