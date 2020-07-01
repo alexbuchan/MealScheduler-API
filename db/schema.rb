@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_06_28_000128) do
     t.time "preparation_time"
     t.time "cooking_time"
     t.string "difficulty"
+    t.string "system_of_measurement"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

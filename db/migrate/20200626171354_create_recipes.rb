@@ -7,8 +7,8 @@ class CreateRecipes < ActiveRecord::Migration[6.0]
       t.time :preparation_time
       t.time :cooking_time
       t.string :difficulty
+      t.string :system_of_measurement
       t.references :user
-      # t.references :unit_of_measurement
     
       t.timestamps
     end
