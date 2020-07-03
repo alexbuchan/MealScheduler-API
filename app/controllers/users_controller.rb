@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   private
 
   def encode_token(payload)
-    JsonWebToken::JsonWebTokenHelper.encode(payload)
+    JsonWebToken.encode(payload)
   end
 
   def user_params
