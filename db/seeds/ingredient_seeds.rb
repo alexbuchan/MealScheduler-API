@@ -6,15 +6,20 @@ ingredients = [
   { name: 'cheese' },
   { name: 'bread' },
   { name: 'wrap' },
-  { name: 'brown rice' },
+  { name: 'rice' },
   { name: 'avocado' },
   { name: 'potato' },
+  { name: 'tomato' },
   { name: 'onion' },
+  { name: 'kidney beans' },
   { name: 'lemon' },
   { name: 'cilantro' },
   { name: 'red pepper' },
   { name: 'green pepper' },
   { name: 'chicken' },
+  { name: 'garlic' },
+  { name: 'red pepper' },
+  { name: 'green pepper' }
 ]
 
 puts '#####################################################################################################'
