@@ -2,12 +2,12 @@
 
 # rubocop:disable Metrics/LineLength
 event_types = [
-  { event_type: 'BREAKFAST' },
-  { event_type: 'LUNCH' },
-  { event_type: 'DINNER' },
-  { event_type: 'SNACK' },
-  { event_type: 'COOKING' },
-  { event_type: 'SHOPPING' },
+  { name: 'BREAKFAST' },
+  { name: 'LUNCH' },
+  { name: 'DINNER' },
+  { name: 'SNACK' },
+  { name: 'COOKING' },
+  { name: 'SHOPPING' },
 ]
 
 puts '#####################################################################################################'
@@ -15,10 +15,10 @@ puts 'Seeding Event Types...'
 puts '#####################################################################################################'
 
 event_types.each do |event_type|
-  puts "Creating #{event_type[:event_type]} ...", "\n"
+  puts "Creating #{event_type[:name]} ...", "\n"
   EventType.create(event_type)
   puts event_type, "\n"
-  puts "#{event_type[:event_type]} created"
+  puts "#{event_type[:name]} created"
 end
 
 puts '#####################################################################################################'
