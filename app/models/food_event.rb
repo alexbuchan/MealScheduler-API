@@ -1,4 +1,4 @@
 class FoodEvent < ApplicationRecord
-  acts_as :event
+  belongs_to :event, dependent: :destroy
   belongs_to :recipe
 end

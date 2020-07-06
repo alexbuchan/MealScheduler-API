@@ -39,17 +39,16 @@ ActiveRecord::Schema.define(version: 2020_07_01_102151) do
     t.string "comments"
     t.bigint "user_id"
     t.bigint "event_type_id"
-    t.string "actable_type"
-    t.bigint "actable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["actable_type", "actable_id"], name: "index_events_on_actable_type_and_actable_id"
     t.index ["event_type_id"], name: "index_events_on_event_type_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "food_events", force: :cascade do |t|
     t.bigint "recipe_id"
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_food_events_on_event_id"
     t.index ["recipe_id"], name: "index_food_events_on_recipe_id"
   end
 
@@ -86,6 +85,8 @@ ActiveRecord::Schema.define(version: 2020_07_01_102151) do
 
   create_table "shopping_events", force: :cascade do |t|
     t.string "date_range"
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_shopping_events_on_event_id"
   end
 
   create_table "shopping_events_recipes", force: :cascade do |t|

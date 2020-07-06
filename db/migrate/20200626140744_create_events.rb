@@ -9,7 +9,6 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.references :user, index: true
       t.references :event_type, index: true
 
-      t.actable
       t.timestamps
     end
   end
