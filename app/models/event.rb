@@ -13,7 +13,7 @@ class Event < ApplicationRecord
 
   def event_type_as_json
     return { recipe: food_event.recipe } if food_event?
-    return { recipes: shopping_event.recipes } if shopping_event?
+    return { recipes: shopping_event.recipes, date_range: shopping_event.date_range } if shopping_event?
   end
 
   def food_event?

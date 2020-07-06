@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   post 'users/login', as: 'login'
 
   resources :recipes
+  resources :events
 end
