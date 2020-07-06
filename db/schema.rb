@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_102151) do
+ActiveRecord::Schema.define(version: 2020_07_06_132635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 2020_07_01_102151) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "date_frequencies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "event_types", force: :cascade do |t|
@@ -84,8 +90,9 @@ ActiveRecord::Schema.define(version: 2020_07_01_102151) do
   end
 
   create_table "shopping_events", force: :cascade do |t|
-    t.string "date_range"
+    t.bigint "date_frequency_id"
     t.bigint "event_id"
+    t.index ["date_frequency_id"], name: "index_shopping_events_on_date_frequency_id"
     t.index ["event_id"], name: "index_shopping_events_on_event_id"
   end
 

@@ -54,15 +54,15 @@ class EventsController < ApplicationController
       :title,
       :event_type,
       :date,
-      :begin_time,
-      :end_time,
+      :begin_at,
+      :end_at,
       :comments,
       food_event_attributes: [
         :recipe_id
       ],
       shopping_event_attributes: [
-        :date_range,
-        recipe_ids: [],
+        :date_frequency_id,
+        recipe_ids: []
       ],
       event_type_attributes: [
         :name
