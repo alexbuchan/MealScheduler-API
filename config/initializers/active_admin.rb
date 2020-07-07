@@ -4,7 +4,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Meal Scheduler Rails"
+  config.site_title = "Meal Scheduler"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -214,7 +214,7 @@ ActiveAdmin.setup do |config|
   #   config.register_stylesheet 'my_print_stylesheet.css', media: :print
   #
   # To load a javascript file:
-  #   config.register_javascript 'my_javascript.js'
+  config.register_javascript 'event_form.js'
 
   # == CSV options
   #
@@ -317,7 +317,7 @@ ActiveAdmin.setup do |config|
   # By default, the footer shows the current Active Admin version. You can
   # override the content of the footer here.
   #
-  # config.footer = 'my custom footer text'
+  config.footer = 'Meal Scheduler by alex.buchan@telefonica.net'
 
   # == Sorting
   #

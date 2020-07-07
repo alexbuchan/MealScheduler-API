@@ -2,10 +2,7 @@
 
 # rubocop:disable Metrics/LineLength
 event_types = [
-  { name: 'BREAKFAST' },
-  { name: 'LUNCH' },
-  { name: 'DINNER' },
-  { name: 'SNACK' },
+  { name: 'FOOD' },
   { name: 'COOKING' },
   { name: 'SHOPPING' },
 ]
