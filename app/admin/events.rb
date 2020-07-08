@@ -2,7 +2,6 @@ ActiveAdmin.register Event do
   permit_params :title, :date, :begin_at, :end_at, :comments, :user_id, :event_type_id, food_event_attributes: [ :recipe_id ], shopping_event_attributes: [ :date_frequency_id, recipe_ids: [] ]
 
   form do |f|
-    ### Declare here the model's own form fields:
     f.inputs "Event" do
       f.input :title
       f.input :user
@@ -13,13 +12,13 @@ ActiveAdmin.register Event do
       f.input :comments
 
       f.inputs 'Food Event', class: 'food-event-form' do
-        f.has_many :food_event, heading: '' do |fe|
+        f.has_many :food_event, new_record: 'Add Recipe', heading: '' do |fe|
           fe.input :recipe
         end
       end
 
       f.inputs 'Shopping Event', class: 'shopping-event-form' do
-        f.has_many :shopping_event, heading: '' do |se|
+        f.has_many :shopping_event, new_record: 'Add Recipe', heading: '' do |se|
           se.input :date_frequency
           se.input :recipes, :as => :check_boxes
         end

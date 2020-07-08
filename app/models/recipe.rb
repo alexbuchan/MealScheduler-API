@@ -4,4 +4,6 @@ class Recipe < ApplicationRecord
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
   has_and_belongs_to_many :shopping_events, join_table: 'shopping_events_recipes'
+
+  accepts_nested_attributes_for :recipe_ingredients, allow_destroy: true
 end
