@@ -1,8 +1,9 @@
 class Event < ApplicationRecord
   belongs_to :user
+  belongs_to :event_type
   has_one :food_event
   has_one :shopping_event
-  belongs_to :event_type
+
   accepts_nested_attributes_for :food_event
   accepts_nested_attributes_for :shopping_event
   accepts_nested_attributes_for :event_type
