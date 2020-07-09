@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   resources :recipes
   resources :events
+  resources :scheduler, only: [:create]
+  resources :shopping_lists, only: [:create]
 end

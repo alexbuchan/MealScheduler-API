@@ -6,4 +6,10 @@ class Recipe < ApplicationRecord
   has_and_belongs_to_many :shopping_events, join_table: 'shopping_events_recipes'
 
   accepts_nested_attributes_for :recipe_ingredients, allow_destroy: true
+
+  def as_json(options = {})
+    json = super(options)
+    json['recipe_ingredients'] = recipe_ingredients
+    json
+  end
 end
