@@ -52,7 +52,7 @@ class EventsController < ApplicationController
     params.require(:event).permit(
       :id,
       :title,
-      :event_type,
+      :event_type_id,
       :date,
       :begin_at,
       :end_at,
@@ -63,9 +63,6 @@ class EventsController < ApplicationController
       shopping_event_attributes: [
         :date_frequency_id,
         recipe_ids: []
-      ],
-      event_type_attributes: [
-        :name
       ]
     ).to_h.symbolize_keys
   end

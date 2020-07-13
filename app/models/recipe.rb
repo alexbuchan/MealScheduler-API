@@ -7,6 +7,9 @@ class Recipe < ApplicationRecord
 
   accepts_nested_attributes_for :recipe_ingredients, allow_destroy: true
 
+  validates :name, :steps, :preparation_time, :cooking_time, :difficulty, :system_of_measurement, presence: true
+  validates :name, length: { minimum: 3 }
+
   def as_json(options = {})
     json = super(options)
     json['recipe_ingredients'] = recipe_ingredients

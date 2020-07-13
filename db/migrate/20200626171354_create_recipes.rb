@@ -4,8 +4,8 @@ class CreateRecipes < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :steps
       t.string :comments
-      t.time :preparation_time
-      t.time :cooking_time
+      t.integer :preparation_time
+      t.integer :cooking_time
       t.string :difficulty
       t.string :system_of_measurement
       t.references :user

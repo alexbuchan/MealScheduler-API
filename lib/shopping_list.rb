@@ -1,5 +1,6 @@
 class ShoppingList
   def initialize(user, params)
+    binding.pry
     @user = user
     @begin_date = Date.parse(params[:date_range][0])
     @end_date = Date.parse(params[:date_range][1])
@@ -27,7 +28,7 @@ class ShoppingList
   # OUT:=> <array[<hash>]>
   # Description :=> Finds all ingredients belonging all food events within the date range given.
   def get_ingredients
-    events = @user.events.where(event_type_id: 1).where(date: @start..@end)
+    events = @user.events.where(event_type_id: 1).where(date: @begin_date..@end_date)
     food_events = events.map { |event| event.food_event }
     recipes = food_events.map { |food_event| food_event.recipe }
     recipe_ingredients = recipes.map { |recipe| recipe.recipe_ingredients }.flatten

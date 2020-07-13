@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Event
 class Event < ApplicationRecord
   belongs_to :user
   belongs_to :event_type
@@ -6,7 +9,12 @@ class Event < ApplicationRecord
 
   accepts_nested_attributes_for :food_event
   accepts_nested_attributes_for :shopping_event
-  accepts_nested_attributes_for :event_type
+
+  validates :title, :date, :begin_at, :end_at, presence: true
+  validates :title, length: { minimum: 3 }
+  validate :date_not_in_past?
+  validate :begin_at_not_in_end_at_future?
+  validate :end_at_not_in_past_or_begin_at_past?
 
   def as_json(options = {})
     json = super(options).merge(event_type_as_json)
@@ -48,5 +56,19 @@ class Event < ApplicationRecord
 
   def shopping_event?
     event_type.name == 'SHOPPING'
+  end
+
+  private
+
+  def date_not_in_past?
+    errors.add(:date, "Can't be in the past") if date.past?
+  end
+
+  def begin_at_not_in_end_at_future?
+    errors.add(:begin_at, "Can't be in your end at's future") if begin_at > end_at
+  end
+
+  def end_at_not_in_past_or_begin_at_past?
+    errors.add(:end_at, "Can't be in your begin at's past") if end_at < begin_at
   end
 end
