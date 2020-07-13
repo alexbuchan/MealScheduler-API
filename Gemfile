@@ -15,6 +15,7 @@ gem 'puma', '~> 4.1'
 gem 'rack-cors', '>= 1.0.4'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'sass-rails', '>= 6'
+gem 'unitwise'
 gem 'webpacker', '~> 4.0'
 
 

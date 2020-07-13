@@ -1,6 +1,5 @@
 class ShoppingList
   def initialize(user, params)
-    binding.pry
     @user = user
     @begin_date = Date.parse(params[:date_range][0])
     @end_date = Date.parse(params[:date_range][1])
@@ -45,7 +44,10 @@ class ShoppingList
     ingredients.each do |ingredient|
       if in_shopping_list?(shopping_list, ingredient)
         shopping_list_ingredient = shopping_list.select { |shopping_list_ingredient| shopping_list_ingredient[:name] == ingredient[:name] }[0]
-        shopping_list_ingredient[:amount] += ingredient[:amount]
+        ingredient_quantity = Unitwise(ingredient[:amount], ingredient[:unit_of_measurement])
+        shopping_list_ingredient_quantity = Unitwise(shopping_list_ingredient[:amount], shopping_list_ingredient[:unit_of_measurement])
+        total = ingredient_quantity + shopping_list_ingredient_quantity
+        shopping_list_ingredient[:amount] = total.value.to_i
         shopping_list_ingredient[:recipe_id].push(ingredient[:recipe_id][0])
       else
         shopping_list.push(ingredient)
