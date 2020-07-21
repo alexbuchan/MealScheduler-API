@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# ShoppingEvent
 class ShoppingEvent < ApplicationRecord
   belongs_to :event, dependent: :destroy
   belongs_to :date_frequency
