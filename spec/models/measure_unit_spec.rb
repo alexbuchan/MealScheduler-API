@@ -2,26 +2,12 @@ require 'rails_helper'
 
 describe MeasureUnit do
   subject { FactoryBot.create(:measure_unit) }
-  
-  context 'validations' do
-    it 'is valid with valid attributes' do
-      expect(subject).to be_valid
-    end
 
-    describe 'name' do
-      context 'when name is NOT present' do
-        it 'is NOT valid' do
-          subject.name = nil
-          expect(subject).to_not be_valid
-        end
-      end
+  describe 'associations' do
+    it { should have_and_belong_to_many(:measure_systems).class_name('MeasureSystem') }
+  end
 
-      context 'when name is present' do
-        it 'is valid' do
-          subject.name = 'litre'
-          expect(subject).to be_valid
-        end
-      end
-    end
+  describe 'validations' do
+    it { should validate_presence_of(:name) }
   end
 end
