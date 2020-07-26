@@ -44,8 +44,8 @@ class ShoppingList
     ingredients.each do |ingredient|
       if in_shopping_list?(shopping_list, ingredient)
         shopping_list_ingredient = shopping_list.select { |shopping_list_ingredient| shopping_list_ingredient[:name] == ingredient[:name] }[0]
-        ingredient_quantity = Unitwise(ingredient[:amount], ingredient[:unit_of_measurement])
-        shopping_list_ingredient_quantity = Unitwise(shopping_list_ingredient[:amount], shopping_list_ingredient[:unit_of_measurement])
+        ingredient_quantity = Unitwise(ingredient[:amount], ingredient[:measure_unit])
+        shopping_list_ingredient_quantity = Unitwise(shopping_list_ingredient[:amount], shopping_list_ingredient[:measure_unit])
         total = ingredient_quantity + shopping_list_ingredient_quantity
         shopping_list_ingredient[:amount] = total.value.to_i
         shopping_list_ingredient[:recipe_id].push(ingredient[:recipe_id][0])
@@ -72,7 +72,7 @@ class ShoppingList
       {
         name: recipe_ingredient.ingredient.name,
         amount: recipe_ingredient.amount,
-        unit_of_measurement: recipe_ingredient.unit_of_measurement,
+        measure_unit: recipe_ingredient.measure_unit,
         recipe_id: [recipe_ingredient.recipe.id]
       }
     end

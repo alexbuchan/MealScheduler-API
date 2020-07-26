@@ -9,6 +9,6 @@ class ShoppingListsController < ApplicationController
   private
 
   def shopping_list_params
-    params.require(:shopping_list).permit(date_range: [], extra_ingredients: [:name, :amount, :unit_of_measurement]).to_h.symbolize_keys
+    params.require(:shopping_list).permit(date_range: [], extra_ingredients: [:name, :amount, :measure_unit]).to_h.symbolize_keys
   end
 end

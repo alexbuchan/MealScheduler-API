@@ -80,11 +80,12 @@ ActiveRecord::Schema.define(version: 2020_07_13_172703) do
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
+    t.integer "amount"
     t.bigint "recipe_id"
     t.bigint "ingredient_id"
-    t.integer "amount"
-    t.string "unit_of_measurement"
+    t.bigint "measure_unit_id"
     t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
+    t.index ["measure_unit_id"], name: "index_recipe_ingredients_on_measure_unit_id"
     t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
   end
 

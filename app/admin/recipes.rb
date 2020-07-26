@@ -1,5 +1,5 @@
 ActiveAdmin.register Recipe do
-  permit_params :name, :steps, :comments, :preparation_time, :cooking_time, :difficulty, :measure_system, :user_id, recipe_ingredients_attributes: [ :ingredient_id, :amount, :unit_of_measurement ]
+  permit_params :name, :steps, :comments, :preparation_time, :cooking_time, :difficulty, :measure_system, :user_id, recipe_ingredients_attributes: [ :ingredient_id, :amount, :measure_unit ]
 
   form do |f|
     f.inputs "Recipe" do
@@ -16,7 +16,7 @@ ActiveAdmin.register Recipe do
         f.has_many :recipe_ingredients, new_record: 'Add Ingredient', heading: '' do |i|
           i.input :ingredient
           i.input :amount
-          i.input :unit_of_measurement, :as => :select, collection: [:gram, :liter]
+          i.input :measure_unit, :as => :select, collection: [:gram, :liter]
         end
       end
 
@@ -37,7 +37,7 @@ ActiveAdmin.register Recipe do
         table_for recipe.recipe_ingredients do
           column :ingredient
           column :amount
-          column :unit_of_measurement
+          column :measure_unit
         end
       end
     end

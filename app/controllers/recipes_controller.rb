@@ -65,7 +65,7 @@ class RecipesController < ApplicationController
       recipe_ingredients_attributes: [
         :ingredient_id,
         :amount,
-        :unit_of_measurement
+        :measure_unit_id
       ]
     ).to_h.symbolize_keys
   end
