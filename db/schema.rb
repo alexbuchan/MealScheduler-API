@@ -95,10 +95,11 @@ ActiveRecord::Schema.define(version: 2020_07_13_172703) do
     t.integer "preparation_time"
     t.integer "cooking_time"
     t.string "difficulty"
-    t.string "system_of_measurement"
+    t.bigint "measure_system_id"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["measure_system_id"], name: "index_recipes_on_measure_system_id"
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 

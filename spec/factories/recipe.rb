@@ -6,7 +6,7 @@ FactoryBot.define do
     preparation_time { 5 }
     cooking_time { 0 }
     difficulty { "easy" }
-    system_of_measurement { "metric" }
+    measure_system { "metric" }
 
     user { FactoryBot.create(:user) }
   end

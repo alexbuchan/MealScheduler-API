@@ -19,10 +19,14 @@ ingredients = {
   lemon: Ingredient.find_by_name('lemon')
 }
 
+measure_systems = {
+  metric: MeasureSystem.find_by_name(:metric)
+}
+
 recipes = [
-  { name: 'Ham Sandwich', difficulty: :easy, preparation_time: '5 minutes', cooking_time: '0 minutes', system_of_measurement: :metric, steps: 'step1-Grab 2 bits of bread-step2-Grab 2 slices of ham-step3-Add the slices of ham between the 2 slices of bread-step4-Enjoy!', comments: 'A simple bread based sandwich' },
-  { name: 'Cheese Sandwich', difficulty: :easy, preparation_time: '5 minutes', cooking_time: '0 minutes', system_of_measurement: :metric, steps: 'step1-Grab 2 bits of bread-step2-Cut 2 slices of cheese-step3-Add the slices of cheese between the 2 slices of bread-step4-Enjoy!', comments: 'A simple bread based sandwich' },
-  { name: 'Fajitas', difficulty: :medium, preparation_time: '20 minutes', cooking_time: '30 minutes', system_of_measurement: :metric, steps: "step1-Make the frijoles in a frying pan, with the onion and garlic.-step2-While making the frijoles also make the filling by adding onions, peppers, chicken and whatever sauce you want to add-step3-Don't forget to boil some rice-step4-While everything is cooking, make the guacamole.-step5-When everything is done, serve in a different dishes, and quantities to your satisfaction in the wraps. Grated cheese and lemon is also highly recommended as a garnish.", comments: 'A simple recipe to make mexican fajitas' }
+  { name: 'Ham Sandwich', difficulty: :easy, preparation_time: '5 minutes', cooking_time: '0 minutes', measure_system: measure_systems[:metric], steps: 'step1-Grab 2 bits of bread-step2-Grab 2 slices of ham-step3-Add the slices of ham between the 2 slices of bread-step4-Enjoy!', comments: 'A simple bread based sandwich' },
+  { name: 'Cheese Sandwich', difficulty: :easy, preparation_time: '5 minutes', cooking_time: '0 minutes', measure_system: measure_systems[:metric], steps: 'step1-Grab 2 bits of bread-step2-Cut 2 slices of cheese-step3-Add the slices of cheese between the 2 slices of bread-step4-Enjoy!', comments: 'A simple bread based sandwich' },
+  { name: 'Fajitas', difficulty: :medium, preparation_time: '20 minutes', cooking_time: '30 minutes', measure_system: measure_systems[:metric], steps: "step1-Make the frijoles in a frying pan, with the onion and garlic.-step2-While making the frijoles also make the filling by adding onions, peppers, chicken and whatever sauce you want to add-step3-Don't forget to boil some rice-step4-While everything is cooking, make the guacamole.-step5-When everything is done, serve in a different dishes, and quantities to your satisfaction in the wraps. Grated cheese and lemon is also highly recommended as a garnish.", comments: 'A simple recipe to make mexican fajitas' }
 ]
 
 recipe_ingredients = [

@@ -60,13 +60,13 @@ class RecipesController < ApplicationController
       :preparation_time,
       :cooking_time,
       :difficulty,
-      :system_of_measurement,
+      :steps,
+      :measure_system_id,
       recipe_ingredients_attributes: [
         :ingredient_id,
         :amount,
         :unit_of_measurement
-      ],
-      steps: [],
+      ]
     ).to_h.symbolize_keys
   end
 end

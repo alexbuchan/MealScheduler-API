@@ -1,11 +1,11 @@
 ActiveAdmin.register Recipe do
-  permit_params :name, :steps, :comments, :preparation_time, :cooking_time, :difficulty, :system_of_measurement, :user_id, recipe_ingredients_attributes: [ :ingredient_id, :amount, :unit_of_measurement ]
+  permit_params :name, :steps, :comments, :preparation_time, :cooking_time, :difficulty, :measure_system, :user_id, recipe_ingredients_attributes: [ :ingredient_id, :amount, :unit_of_measurement ]
 
   form do |f|
     f.inputs "Recipe" do
       f.input :name
       f.input :user
-      f.input :system_of_measurement
+      f.input :measure_system
       f.input :difficulty
       f.input :preparation_time, :as => :time_picker, :step => :quarter_hour
       f.input :cooking_time, :as => :time_picker
