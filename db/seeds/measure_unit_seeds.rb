@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # rubocop:disable Metrics/LineLength
-
 measure_unit_types = {
   weight: MeasureUnitType.find_by_unit_type(:weight),
   volume: MeasureUnitType.find_by_unit_type(:volume)

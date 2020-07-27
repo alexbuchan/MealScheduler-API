@@ -1,25 +1,33 @@
 # frozen_string_literal: true
 
 # rubocop:disable Metrics/LineLength
+measure_unit_types = {
+  weight: MeasureUnitType.find_by_unit_type(:weight),
+  volume: MeasureUnitType.find_by_unit_type(:volume)
+}
+
 ingredients = [
-  { name: 'ham' },
-  { name: 'cheese' },
-  { name: 'bread' },
-  { name: 'wrap' },
-  { name: 'rice' },
-  { name: 'avocado' },
-  { name: 'potato' },
-  { name: 'tomato' },
-  { name: 'onion' },
-  { name: 'kidney beans' },
-  { name: 'lemon' },
-  { name: 'cilantro' },
-  { name: 'red pepper' },
-  { name: 'green pepper' },
-  { name: 'chicken' },
-  { name: 'garlic' },
-  { name: 'red pepper' },
-  { name: 'green pepper' }
+  { name: 'ham', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'cheese', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'bread', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'wrap', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'rice', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'avocado', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'potato', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'tomato', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'onion', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'kidney beans', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'lemon', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'cilantro', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'red pepper', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'green pepper', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'chicken', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'garlic', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'red pepper', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'green pepper', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'water', measure_unit_type_id: measure_unit_types[:volume].id },
+  { name: 'milk', measure_unit_type_id: measure_unit_types[:volume].id },
+  { name: 'black tea', measure_unit_type_id: measure_unit_types[:weight].id }
 ]
 
 puts '#####################################################################################################'

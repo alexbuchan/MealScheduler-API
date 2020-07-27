@@ -60,8 +60,10 @@ ActiveRecord::Schema.define(version: 2020_07_27_110800) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
+    t.bigint "measure_unit_type_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["measure_unit_type_id"], name: "index_ingredients_on_measure_unit_type_id"
   end
 
   create_table "measure_systems", force: :cascade do |t|
