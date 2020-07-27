@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post 'users/register'
   post 'users/login', as: 'login'
 
+  resources :ingredients
   resources :recipes
   resources :events
   resources :scheduler, only: [:create]
