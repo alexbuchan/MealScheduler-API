@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
     if @user.save
       payload = {
+        auth: true,
         user: { id: @user.id, username: @user.username, email: @user.email },
         message: 'User registered'
       }
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
 
     if @user&.authenticate(user_params[:password])
       payload = {
+        auth: true,
         user: { id: @user.id, username: @user.username, email: @user.email },
         message: 'User logged in'
       }
