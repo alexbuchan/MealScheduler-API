@@ -1,5 +1,6 @@
 load 'db/seeds/admin_user_seeds.rb'
 load 'db/seeds/user_seeds.rb'
+load 'db/seeds/measure_unit_type_seeds.rb'
 load 'db/seeds/systems_of_measure_seeds.rb'
 load 'db/seeds/units_of_measure_seeds.rb'
 load 'db/seeds/ingredient_seeds.rb'

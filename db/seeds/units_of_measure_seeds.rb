@@ -1,37 +1,45 @@
 # frozen_string_literal: true
 
 # rubocop:disable Metrics/LineLength
+
+measure_unit_types = {
+  weight: MeasureUnitType.find_by_unit_type(:weight),
+  volume: MeasureUnitType.find_by_unit_type(:volume)
+}
+
 measure_units = [
   # Metric
-  { name: 'gram' },
-  { name: 'kilogram' },
-  { name: 'milliliter' },
-  { name: 'liter' },
+  { name: 'gram', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'kilogram', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'milliliter', measure_unit_type_id: measure_unit_types[:volume].id },
+  { name: 'liter', measure_unit_type_id: measure_unit_types[:volume].id },
 
   # Shared Avoirdupoid
-  { name: 'grain' },
-  { name: 'ounce' },
-  { name: 'dram' },
-  { name: 'pound' },
+  { name: 'grain', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'ounce', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'dram', measure_unit_type_id: measure_unit_types[:weight].id },
+  { name: 'pound', measure_unit_type_id: measure_unit_types[:weight].id },
   
   # Imperial
-  { name: 'stone' },
+  { name: 'stone', measure_unit_type_id: measure_unit_types[:weight].id },
 
-  { name: 'fluid ounce' },
-  { name: 'gill' },
-  { name: 'pint' },
+  { name: 'fluid ounce', measure_unit_type_id: measure_unit_types[:volume].id },
+  { name: 'gill', measure_unit_type_id: measure_unit_types[:volume].id },
+  { name: 'pint', measure_unit_type_id: measure_unit_types[:volume].id },
 
   # US Customary
-  { name: 'teaspoon' },
-  { name: 'tablespoon' },
-  { name: 'us fluid ounce' },
-  { name: 'us shot' },
-  { name: 'us gill' },
-  { name: 'us cup' },
-  { name: 'us pint' }
+  { name: 'teaspoon', measure_unit_type_id: measure_unit_types[:volume].id },
+  { name: 'tablespoon', measure_unit_type_id: measure_unit_types[:volume].id },
+  { name: 'us fluid ounce', measure_unit_type_id: measure_unit_types[:volume].id },
+  { name: 'us shot', measure_unit_type_id: measure_unit_types[:volume].id },
+  { name: 'us gill', measure_unit_type_id: measure_unit_types[:volume].id },
+  { name: 'us cup', measure_unit_type_id: measure_unit_types[:volume].id },
+  { name: 'us pint', measure_unit_type_id: measure_unit_types[:volume].id }
 ]
 
 measure_systems_units = [
+  [1],
+  [1],
   [1],
   [1],
   [2, 3],

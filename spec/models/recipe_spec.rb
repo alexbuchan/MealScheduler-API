@@ -5,6 +5,7 @@ RSpec.describe Recipe, type: :model do
 
   describe 'associations' do
     it { should belong_to(:user).class_name('User') }
+    it { should belong_to(:measure_system).class_name('MeasureSystem') }
     it { should have_many(:food_events).class_name('FoodEvent') }
     it { should have_many(:recipe_ingredients).class_name('RecipeIngredient') }
     it { should have_many(:ingredients).through(:recipe_ingredients) }
@@ -22,7 +23,7 @@ RSpec.describe Recipe, type: :model do
 
   describe '#as_json' do
     it 'returns the correct attributes in json format' do
-      attributes = [:id, :name, :steps, :comments, :preparation_time, :cooking_time, :difficulty, :measure_system, :user_id, :created_at, :updated_at, :recipe_ingredients]
+      attributes = [:id, :name, :steps, :preparation_time, :cooking_time, :difficulty, :measure_system, :comments, :user_id, :created_at, :updated_at, :recipe_ingredients]
       expect(subject.as_json.symbolize_keys.keys).to eq(attributes)
     end
   end

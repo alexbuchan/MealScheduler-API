@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_13_172703) do
+ActiveRecord::Schema.define(version: 2020_07_27_110800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,8 +75,14 @@ ActiveRecord::Schema.define(version: 2020_07_13_172703) do
     t.index ["measure_unit_id"], name: "index_measure_systems_units_on_measure_unit_id"
   end
 
+  create_table "measure_unit_types", force: :cascade do |t|
+    t.string "unit_type"
+  end
+
   create_table "measure_units", force: :cascade do |t|
     t.string "name"
+    t.bigint "measure_unit_type_id"
+    t.index ["measure_unit_type_id"], name: "index_measure_units_on_measure_unit_type_id"
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
