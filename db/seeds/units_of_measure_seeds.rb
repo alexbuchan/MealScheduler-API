@@ -4,7 +4,9 @@
 measure_units = [
   # Metric
   { name: 'gram' },
-  { name: 'litre' },
+  { name: 'kilogram' },
+  { name: 'milliliter' },
+  { name: 'liter' },
 
   # Shared Avoirdupoid
   { name: 'grain' },
