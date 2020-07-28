@@ -18,6 +18,7 @@ class Event < ApplicationRecord
 
   def as_json(options = {})
     json = super(options).merge(event_type_as_json)
+    json['event_type'] = event_type.name
     json['begin_at'] = begin_at.strftime("%H:%M")
     json['end_at'] = end_at.strftime("%H:%M")
     json
