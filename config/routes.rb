@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :ingredients
   resources :recipes
   resources :events
+  resources :event_types, only: [:index]
+  resources :date_frequencies, only: [:index]
   resources :scheduler, only: [:create]
   resources :shopping_lists, only: [:create]
 end
