@@ -68,7 +68,7 @@ recipes.each_with_index do |recipe, index|
   recipe_instance = user.recipes.create(recipe)
   recipe_ingredients[index].each do |ingredient|
     recipe_ingredient = RecipeIngredient.new(recipe_id: recipe_instance.id, ingredient_id: ingredient[:ingredient_id], amount: ingredient[:amount], measure_unit_id: ingredient[:measure_unit_id])
-    recipe_ingredient.save
+    recipe_ingredient.save!
   end
   puts recipe, "\n"
   puts "#{recipe[:name]} created"

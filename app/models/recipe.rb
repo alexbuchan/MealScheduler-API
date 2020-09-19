@@ -12,14 +12,16 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :recipe_ingredients, allow_destroy: true
   accepts_nested_attributes_for :measure_system
 
-  validates :name, :steps, :preparation_time, :cooking_time, :difficulty, :measure_system, presence: true
+  # validates_presence_of :recipe_ingredients
+  validates_presence_of :measure_system
+  validates :name, :measure_system, :difficulty, presence: true
   validates :name, length: { minimum: 3 }
 
   def as_json(options = {})
     json = {}
     json['id'] = id
     json['name'] = name
-    json['steps'] = steps
+    json['steps'] = Hash[*(steps.split('-'))]
     json['preparation_time'] = preparation_time
     json['cooking_time'] = cooking_time
     json['difficulty'] = difficulty
