@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   post 'users/register'
   post 'users/login', as: 'login'
+  post 'recipes/recipe_images_upload', as: 'recipe_images_upload'
 
   resources :ingredients
   resources :recipes

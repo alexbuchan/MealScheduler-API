@@ -31,6 +31,9 @@ module MealSchedulerRails
     end
 
     config.eager_load_paths << Rails.root.join('lib')
+    config.eager_load_paths << Rails.root.join('/app/services')
+
+    config.application = config_for(:application)
     config.generators.system_tests = nil
   end
 end

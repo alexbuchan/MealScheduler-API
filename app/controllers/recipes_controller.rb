@@ -13,10 +13,17 @@ class RecipesController < ApplicationController
   # POST /recipes/
   def create
     recipe = current_user.recipes.new(recipe_params)
-    if recipe.save
-      render json: { message: 'Recipe successfully created' }, status: :created
+    if recipe.save!
+      render json: { message: 'Recipe successfully created', recipe_id: recipe.id }, status: :created
     else
       render json: { errors: recipe.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  # POST /recipe_images_upload
+  def recipe_images_upload
+    if has_images?
+      save_images_to_s3
     end
   end
 
@@ -52,10 +59,28 @@ class RecipesController < ApplicationController
 
   private
 
+  def save_images_to_s3
+    s3 = S3Service.new(@current_user)
+    params['images_quantity'].to_i.times do |index|
+      s3.upload_image(
+        params['recipe_id'],
+        params["file_#{index}_file"],
+        params["file_#{index}_image_type"],
+        params["file_#{index}_order_index"],
+        params["file_#{index}_step"]
+      )
+    end
+  end
+
+  def has_images?
+    params['images_quantity'].to_i > 0
+  end
+
   def recipe_params
     params.require(:recipe).permit(
       :id,
       :name,
+      :images,
       :comments,
       :preparation_time,
       :cooking_time,

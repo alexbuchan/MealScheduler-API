@@ -12,6 +12,10 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :recipe_ingredients, allow_destroy: true
   accepts_nested_attributes_for :measure_system
 
+  before_destroy :delete_s3_bucket_images
+
+  attr_accessor :images
+
   # validates_presence_of :recipe_ingredients
   validates_presence_of :measure_system
   validates :name, :measure_system, :difficulty, presence: true
@@ -31,6 +35,17 @@ class Recipe < ApplicationRecord
     json['created_at'] = created_at
     json['updated_at'] = updated_at
     json['recipe_ingredients'] = recipe_ingredients
+    json['images'] = find_recipe_images
     json
+  end
+
+  def find_recipe_images
+    S3Service.new(user).download_images(id)
+  end
+
+  private
+
+  def delete_s3_bucket_images
+    s3 = S3Service.new(user).delete_recipe_images(id)
   end
 end
