@@ -9,7 +9,7 @@ class S3Service
     )
 
     s3 = Aws::S3::Resource.new(client: @client)
-    @bucket = s3.bucket('meal-scheduler-images')
+    @bucket = s3.bucket(Rails.configuration.application[:s3_bucket])
   end
 
   def upload_image(recipe_id, file, image_type, order_index, step_number)
@@ -35,11 +35,12 @@ class S3Service
 
     images = []
     image_names_array.each do |image_name|
-      object = @client.get_object(bucket: 'meal-scheduler-images', key: image_name)
+      object = @client.get_object(bucket: Rails.configuration.application[:s3_bucket], key: image_name)
       images.push({
-        file_name: image_name,
+        file_name: "#{Rails.configuration.application[:s3_bucket_url]}#{image_name}",
         image_type: object.metadata['image_type'] ,
-        order_index: object.metadata['order_index']
+        order_index: object.metadata['order_index'],
+        step_number: object.metadata['step']
       })
     end
     

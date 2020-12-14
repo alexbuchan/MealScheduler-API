@@ -1,2 +1,3 @@
-default:
+shared:
   s3_bucket: 'meal-scheduler-images'
+  s3_bucket_url: 'https://meal-scheduler-images.s3.eu-west-2.amazonaws.com/'
