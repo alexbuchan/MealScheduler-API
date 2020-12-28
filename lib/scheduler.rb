@@ -40,7 +40,9 @@ class Scheduler
   private
 
   def find_events_for_day(date, events)
-    events.select { |event| event.date == date }
+    # SET TO CURRENT USER PLEASE. CURRENTLY SENDING ALL EVENTS, NOT USER SPECIFIC!!
+    filtered_events = events.select { |event| event.date == date }
+    ActiveModelSerializers::SerializableResource.new(filtered_events, each_serializer: EventSerializer)
   end
 
   def pad_beginning_of_schedule

@@ -28,7 +28,7 @@ ActiveAdmin.register Recipe do
     attributes_table do
       row :title
       row :user
-      row :event_type
+      row :eventable_type
       row :date
       row :begin_at
       row :end_at

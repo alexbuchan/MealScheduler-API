@@ -4,6 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.0'
 
 gem 'activeadmin'
+gem 'active_model_serializers', '>= 0.10.2'
+gem 'aws-sdk'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'cancancan'
@@ -17,7 +19,6 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'sass-rails', '>= 6'
 gem 'unitwise'
 gem 'webpacker', '~> 4.0'
-gem 'aws-sdk'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_110800) do
+ActiveRecord::Schema.define(version: 2020_12_22_184522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,29 +33,31 @@ ActiveRecord::Schema.define(version: 2020_07_27_110800) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "event_types", force: :cascade do |t|
-    t.string "name"
-  end
-
   create_table "events", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "eventable_id"
+    t.string "eventable_type"
     t.string "title"
     t.date "date"
     t.time "begin_at"
     t.time "end_at"
     t.string "comments"
-    t.bigint "user_id"
-    t.bigint "event_type_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["event_type_id"], name: "index_events_on_event_type_id"
+    t.index ["eventable_id"], name: "index_events_on_eventable_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "food_events", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "food_events_recipes", force: :cascade do |t|
     t.bigint "recipe_id"
-    t.bigint "event_id"
-    t.index ["event_id"], name: "index_food_events_on_event_id"
-    t.index ["recipe_id"], name: "index_food_events_on_recipe_id"
+    t.bigint "food_event_id"
+    t.index ["food_event_id"], name: "index_food_events_recipes_on_food_event_id"
+    t.index ["recipe_id"], name: "index_food_events_recipes_on_recipe_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -114,9 +116,7 @@ ActiveRecord::Schema.define(version: 2020_07_27_110800) do
 
   create_table "shopping_events", force: :cascade do |t|
     t.bigint "date_frequency_id"
-    t.bigint "event_id"
     t.index ["date_frequency_id"], name: "index_shopping_events_on_date_frequency_id"
-    t.index ["event_id"], name: "index_shopping_events_on_event_id"
   end
 
   create_table "shopping_events_recipes", force: :cascade do |t|

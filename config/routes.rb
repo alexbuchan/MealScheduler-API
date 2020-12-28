@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   post 'users/register'
   post 'users/login', as: 'login'
   post 'recipes/recipe_images_upload', as: 'recipe_images_upload'
+  get 'event_types', to: 'events#event_types'
 
+  resources :events
   resources :ingredients
   resources :recipes
-  resources :events
-  resources :event_types, only: [:index]
   resources :date_frequencies, only: [:index]
   resources :scheduler, only: [:create]
   resources :shopping_lists, only: [:create]
