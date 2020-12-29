@@ -116,6 +116,8 @@ ActiveRecord::Schema.define(version: 2020_12_22_184522) do
 
   create_table "shopping_events", force: :cascade do |t|
     t.bigint "date_frequency_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["date_frequency_id"], name: "index_shopping_events_on_date_frequency_id"
   end
 

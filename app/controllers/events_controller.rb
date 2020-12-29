@@ -7,8 +7,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    binding.pry
-
     event = current_user.events.new(event_params[:event])
     @klass = event_params[:event]['eventable_type'].constantize
     event.eventable = @klass.new(event_params[:specific_event_data]) # unless event_params[:specific_event_data].empty?
