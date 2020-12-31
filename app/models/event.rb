@@ -7,9 +7,9 @@ class Event < ApplicationRecord
 
   validates :title, :date, :begin_at, :end_at, presence: true
   validates :title, length: { minimum: 3 }
-  validate :date_not_in_past?
-  validate :begin_at_not_in_end_at_future?
-  validate :end_at_not_in_past_or_begin_at_past?
+  validate :date_not_in_past?, on: :create
+  validate :begin_at_not_in_end_at_future?, on: :create
+  validate :end_at_not_in_past_or_begin_at_past?, on: :create
 
   def event_type
     eventable.class.to_s
